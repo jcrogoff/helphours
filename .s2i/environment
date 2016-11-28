@@ -1,1 +1,4 @@
-export APP_FILE=application.py
+sourceStrategy:
+  env:
+    - name: "APP_FILE"
+      value: "application.py"
