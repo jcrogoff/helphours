@@ -1,5 +1,5 @@
 from flask import Flask, flash, redirect, render_template, request, session, url_for
-from cs50 import SQL
+from cs50.sql import SQL
 from flask_session import Session
 from tempfile import gettempdir
 import csv
