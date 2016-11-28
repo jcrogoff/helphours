@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Teacher See Requests
+{% endblock %}
+
+{% block body %}
+<h1>Current Requests</h1>
+    <form action="{{ url_for('viewrequests_t') }}" method="post">
+            <fieldset>
+                <table style="width:100%">
+                    <tr>
+                        <th>Student</th>
+                        <th>Table</th>
+                        <th>Problem</th>
+                        <th>Wait Time</th>
+                        <th>View More</th>
+                    </tr>
+                    {% for dict in result %}
+                    <tr>
+                            <td>{{dict['student_name']}}</td>
+                            <td>{{dict['table_id']}}</td>
+                            <td>{{dict['problem']}}</td>
+                            <td>{{dict['time_submitted']}}</td>
+                            <td><button class="btn btn-default" type="submit">View More</button></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </fieldset>
+    </form>
+{% endblock %}
