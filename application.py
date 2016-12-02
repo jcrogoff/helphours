@@ -3,7 +3,6 @@ from cs50.sql import SQL
 from flask_session import Session
 from tempfile import gettempdir
 import csv
-import urllib.request
 
 app = Flask(__name__)
 #app.config.from_pyfile('application.cfg')
