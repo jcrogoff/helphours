@@ -87,4 +87,7 @@ def viewrequests_t():
 def viewrequests_s():
     rows = db.execute('SELECT * FROM current_requests')
     return render_template("viewrequests_s.html", result = rows)
+    
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port = 8080)
 
