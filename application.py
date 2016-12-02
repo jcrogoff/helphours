@@ -20,6 +20,7 @@ if app.config['DEBUG']:
 app.config['SESSION_FILE_DIR'] = gettempdir()
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_TYPE'] = 'filesystem'
+
 Session(app)
 
 # configure CS50 Library to use SQLite database
