@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-# This file may be used instead of Apache mod_wsgi to run your python
+#I did not write this code myself, it is from https://github.com/openshift-quickstart/flask-base/blob/master/app.py
+#This file may be used instead of Apache mod_wsgi to run your python
 # web application in a different framework.  A few examples are
 # provided (cherrypi, gevent), but this file may be altered to run
 # whatever framework is desired - or a completely customized service.
@@ -36,7 +37,7 @@ except IOError:
 #
 if __name__ == '__main__':
     application = imp.load_source('app', 'application.py')
-    port = application.app.config['PORT']
+    port = application.app.config['8080']
     ip = application.app.config['IP']
     app_name = application.app.config['APP_NAME']
     host_name = application.app.config['HOST_NAME']
