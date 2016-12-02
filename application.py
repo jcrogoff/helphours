@@ -6,6 +6,7 @@ import csv
 import urllib.request
 
 app = Flask(__name__)
+app.config.from_pyfile('application.cfg')
 
 # ensure responses aren't cached
 if app.config['DEBUG']:
