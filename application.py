@@ -3,6 +3,7 @@ from cs50.sql import SQL
 from flask_session import Session
 from tempfile import gettempdir
 import csv
+import json
 
 app = Flask(__name__)
 #app.config.from_pyfile('application.cfg')
@@ -86,6 +87,23 @@ def viewrequests_t():
 def viewrequests_s():
     rows = db.execute('SELECT * FROM current_requests')
     return render_template("viewrequests_s.html", result = rows)
+
+
+@app.route("/sendData", methods=['POST', 'GET'])
+def sendData():
+    post = request.json
+    student_name = post['student_name']
+    table_id = post['table_id']
+    problem = post['problem']
+    description = post['description']
+    db.execute('INSERT INTO current_requests (student_name, table_id, problem, description) VALUES(:student_name, :table_id, :problem, :description)', student_name=student_name, table_id=table_id, problem=problem, description=description)
+    
+@app.route("/getData")
+def getData():
+    db.execute('SELECT * from current_requests')
+    return json.dumps({"status": "success"})
+
+    
     
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port = 8080)
