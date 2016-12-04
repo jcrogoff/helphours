@@ -106,7 +106,7 @@ def sendData():
 @app.route("/getData")
 def getData():
     if db.execute('SELECT * from current_requests'):
-        return db.execute('SELECT * from current_requests')
+        return json.dumps(db.execute('SELECT * from current_requests'))
     else:
         return json.dumps({"status": "success"})
 
