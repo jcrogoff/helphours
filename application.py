@@ -92,8 +92,8 @@ def viewrequests_s():
 @app.route("/sendData", methods=['POST', 'GET'])
 def sendData():
     post = request.json
+    print("{}".format(post))
     student_name = post['student_name']
-    return json.dumps({"status": "success2"})
     table_id = post['table_id']
     problem = post['problem']
     description = post['description']
