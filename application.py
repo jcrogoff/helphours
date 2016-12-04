@@ -93,9 +93,9 @@ def viewrequests_s():
 def sendData():
     if request.method == 'POST':
         post = request.json
-        
-        return json.dumps({str(dir(request)): "success"})
+
         student_name = post['student_name']
+        
         table_id = post['table_id']
         problem = post['problem']
         description = post['description']
