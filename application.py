@@ -98,9 +98,9 @@ def sendData():
         problem = post['problem']
         description = post['description']
         db.execute('INSERT INTO current_requests (student_name, table_id, problem, description) VALUES(:student_name, :table_id, :problem, :description)', student_name=student_name, table_id=table_id, problem=problem, description=description)
-        return json.dumps({"status": "kill me NOWWWW"})
+        return json.dumps({"status": "success"})
     else:
-        return json.dumps({"status": "kill me"})
+        return json.dumps({"status": "failure"})
 
     
 @app.route("/getData")
