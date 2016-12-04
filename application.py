@@ -93,13 +93,12 @@ def viewrequests_s():
 def sendData():
     if request.method == 'POST':
         post = request.json
-
         student_name = post['student_name']
-        
         table_id = post['table_id']
         problem = post['problem']
         description = post['description']
         db.execute('INSERT INTO current_requests (student_name, table_id, problem, description) VALUES(:student_name, :table_id, :problem, :description)', student_name=student_name, table_id=table_id, problem=problem, description=description)
+        return json.dumps({"status": "kill me NOWWWW"})
     else:
         return json.dumps({"status": "kill me"})
 
