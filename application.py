@@ -114,12 +114,14 @@ def getData():
 def moveData():
     if request.method == 'POST':
         post = request.json
+        request_id = post['request_id']
         student_name = post['student_name']
         table_id = post['table_id']
         problem = post['problem']
         description = post['description']
         time_submitted = post['time_submitted']
         db.execute('INSERT INTO filled_requests (student_name, table_id, problem, description, time_submitted) VALUES(:student_name, :table_id, :problem, :description, :time_submitted)', student_name=student_name, table_id=table_id, problem=problem, description=description, time_submitted=time_submitted)
+        db.execute('DELETE FROM current_requests WHERE username = :request_id', request_id = request_id)
         return json.dumps({"status": "success"})
     else:
         return json.dumps({"status": "failure"})
