@@ -120,8 +120,8 @@ def moveData():
         problem = post['problem']
         description = post['description']
         time_submitted = post['time_submitted']
-        return json.dumps({"status": "success"})
         db.execute('INSERT INTO filled_requests (request_id, student_name, table_id, problem, description, time_submitted) VALUES(:request_id, :student_name, :table_id, :problem, :description, :time_submitted)', request_id = request_id, student_name=student_name, table_id=table_id, problem=problem, description=description, time_submitted=time_submitted)
+        return json.dumps({"status": "success"})
         db.execute('DELETE FROM current_requests WHERE request_id = :request_id', request_id = request_id)
         return json.dumps({"status": "success"})
     else:
