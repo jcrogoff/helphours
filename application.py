@@ -110,6 +110,20 @@ def getData():
     else:
         return json.dumps({"status": "success"})
 
+@app.route("/moveData")
+def moveData():
+    if request.method == 'POST':
+        post = request.json
+        student_name = post['student_name']
+        table_id = post['table_id']
+        problem = post['problem']
+        description = post['description']
+        time_submitted = post['time_submitted']
+        db.execute('INSERT INTO filled_requests (student_name, table_id, problem, description, time_submitted) VALUES(:student_name, :table_id, :problem, :description, :time_submitted)', student_name=student_name, table_id=table_id, problem=problem, description=description, time_submitted=time_submitted)
+        return json.dumps({"status": "success"})
+    else:
+        return json.dumps({"status": "failure"})
+
     
     
 if __name__ == "__main__":
