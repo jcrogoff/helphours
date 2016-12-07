@@ -110,7 +110,7 @@ def getData():
     else:
         return json.dumps({"status": "success"})
 
-@app.route("/moveData")
+@app.route("/moveData", methods=['POST', 'GET'])
 def moveData():
     if request.method == 'POST':
         post = request.json
