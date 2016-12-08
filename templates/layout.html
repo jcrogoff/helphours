@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 
 <html>
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     
     <head>
+        
         <meta content="initial-scale=1, width=device-width" name="viewport"/>
         <title>{% block title %}{% endblock %}</title>
-        <style>
+         <style>
             #grad1 {
-                height: 10000px;
+                height: 100%;
                 background: red; /* For browsers that do not support gradients */
-                background: -webkit-linear-gradient(#FF6633, #999999); /* For Safari 5.1 to 6.0 */
-                background: -o-linear-gradient(#FF6633, #999999); /* For Opera 11.1 to 12.0 */
-                background: -moz-linear-gradient(#FF6633, #999999); /* For Firefox 3.6 to 15 */
-                background: linear-gradient(#FF6633, #999999); /* Standard syntax (must be last) */
+                background: -webkit-linear-gradient(#FF6633, #999999) fixed; /* For Safari 5.1 to 6.0 */
+                background: -o-linear-gradient(#FF6633, #999999) fixed; /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(#FF6633, #999999) fixed; /* For Firefox 3.6 to 15 */
+                background: linear-gradient(#FF6633, #999999) fixed; /* Standard syntax (must be last) */
             }
         </style>
     </head>
