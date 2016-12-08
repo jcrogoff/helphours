@@ -15,7 +15,7 @@
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-        <title>C$50 Finance: {% block title %}{% endblock %}</title>
+        <title>HelpHours Finance: {% block title %}{% endblock %}</title>
 
     </head>
 
@@ -35,23 +35,12 @@
                         <a class="navbar-brand" href="{{ url_for('index') }}"><span class="blue">C</span><span class="red">$</span><span class="yellow">5</span><span class="green">0</span> <span class="red">Finance</span></a>
                     </div>
                     <div class="collapse navbar-collapse" id="navbar">
-                        {% if session.user_id %}
-                            <ul class="nav navbar-nav">
-                                <li><a href="{{ url_for('quote') }}">Quote</a></li>
-                                <li><a href="{{ url_for('buy') }}">Buy</a></li>
-                                <li><a href="{{ url_for('sell') }}">Sell</a></li>
-                                <li><a href="{{ url_for('history') }}">History</a></li>
-                                <li><a href="{{ url_for('password') }}">Account Settings</a></li>
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                            </ul>
-                        {% else %}
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="{{ url_for('register') }}">Register</a></li>
-                                <li><a href="{{ url_for('logout') }}">Log In</a></li>
-                            </ul>
-                        {% endif %}
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ url_for('requesthelp_s') }}">Student Look</a></li>
+                            <li><a href="{{ url_for('viewrequests_t') }}">TF Look</a></li>
+                            <li><a href="{{ url_for('viewrequests_s') }}">Sell</a></li>
+                        </ul>
+                       
                     </div>
                 </div>
             </nav>
