@@ -2,6 +2,9 @@ from flask import Flask, flash, redirect, render_template, request, session, url
 from cs50.sql import SQL
 from flask_session import Session
 from tempfile import gettempdir
+from time import gmtime, strftime
+import time
+import datetime
 import csv
 import json
 
@@ -39,26 +42,31 @@ def requesthelp_s():
         
         # ensure name was submitted
         if not request.form.get('Name'):
-            return render_template("apology.html")
+            return render_template("apology.html", message = "Please input name")
         
         student_name = request.form['Name']
         
         # ensure table_id was submitted
         if not request.form.get('Table'):
-            return render_template("apology.html")
+            return render_template("apology.html", message = "Please input table id #")
         
         table_id = request.form['Table']
         
         # ensure problem was submitted
         if not request.form.get('Problem'):
-            return render_template("apology.html")
+            return render_template("apology.html", message = "Please input problem")
+        
+        words = request.form.get('Problem').split()
+        
+        if len(words) > 3:
+            return render_template("apology.html", message = "Problem cannot be longer than 3 words, feel free to elaborate in description")
             
         problem = request.form['Problem']
         
         # see if description was submitted
         if not request.form.get('Description'):
-            description = None
-            #idk what do I want to do if they don't submit a discription
+            description = "None"
+            
         else:
             description = request.form['Description']
         
@@ -66,26 +74,26 @@ def requesthelp_s():
         
         return redirect(url_for('viewrequests_s'))
         
-    
     # if user reached route via GET (as by submitting a form via POST)
     else:
         return render_template("requesthelp_s.html")
-        
-
-@app.route("/viewrequests_t", methods=["GET", "POST"])
-def viewrequests_t():
-    if request.method == "POST":
-        #VIEW MORE CODE GOES HERE
-        #this doesn't work rn but who cares
-        return render_template("requesthelp_s.html")
-        
-    else:
-        rows = db.execute('SELECT * FROM current_requests')
-        return render_template("viewrequests_t.html", result = rows)
 
 @app.route("/viewrequests_s", methods=["GET"])
 def viewrequests_s():
     rows = db.execute('SELECT * FROM current_requests')
+     #iterate through each stock instance
+    for i in range(len(rows)):
+        
+        time_submitted = rows[i]['time_submitted']
+        ts = time.time()
+        currentTime = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+        #currentTime= strftime("%Y-%m-%d %H:%M:%S", gmtime())
+        d1 = datetime.datetime.strptime(time_submitted, '%Y-%m-%d %H:%M:%S')
+        d2 = datetime.datetime.strptime(currentTime, '%Y-%m-%d %H:%M:%S')
+        difference = d2 - d1
+        print(difference)
+        rows[i]['difference'] = str(int(difference / datetime.timedelta(minutes=1))) + " min"
+    
     return render_template("viewrequests_s.html", result = rows)
 
 

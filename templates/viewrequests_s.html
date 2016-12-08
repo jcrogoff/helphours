@@ -4,32 +4,22 @@
 Student See Requests
 {% endblock %}
 
-{% block body %}
-<div id="grad1">
-    <h1>Current Requests</h1>
-        <form action="{{ url_for('viewrequests_s') }}" method="get">
-                <fieldset>
-                    <table style="width:100%">
-                        <tr>
-                            <th>Problem</th>
-                            <th>Wait Time</th>
-                        </tr>
-                        {% for dict in result %}
-                        <tr>
-                                <td>{{dict['problem']}}</td>
-                                <td>{{dict['time_submitted']}}</td>
-                        </tr>
-                        {% endfor %}
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <th>Current Wait Time: {{total_wait}}</th>
-                        </tr>
-                    </table>
-                </fieldset>
-        </form>
-</div>
+{% block main %}
+    <form action="{{ url_for('viewrequests_s') }}" method="get">
+            <fieldset>
+                <table style="width:100%">
+                    <tr>
+                        <th><h1>Waiting Problems:</h1></th>
+                        <th><h1>Wait Time:</h1></th>
+                    </tr>
+                    {% for dict in result %}
+                    <tr>
+                        <td><h2>{{dict['problem']}}</h2></td>
+                        <td><h2>{{dict['difference']}}</h2></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </fieldset>
+    </form>
 {% endblock %}
 
