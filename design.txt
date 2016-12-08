@@ -1,0 +1,61 @@
+First I built the basic framework of the application on the local CS50 ide server. (really basic
+html, no bootstrap, layout file was basically empty). Please not that at this stage there was a "TF look"
+section of the webstie however I later decided that the website would only be for
+students (since TF's are more moblie, it didn't make sense to me that they woud be walking around with
+a computer). All this framework did was have a request form to push from the database and a table that 
+pulled from the database (a very bare bones version of my application). I made the descicion to only allow 
+up to a 4 word problem section on the web because here the user is not on a phone and therefore does not
+have perception for how the TF is going to see the problem displayed. I then realized that I was not
+going to be able to push and pull to the database from android because my cs50 server was not open on the
+web. I deicded to deploy my webstie online.
+
+In hinesight, I think this was not necessary (I later learned that there is some way to make the ide public) 
+however I am stil happy with my desicion to push to the web because it was something I really wanted to learn
+how to do and I finally did learn how to do it! To do this I pushed all my code to github and attempted to use a 
+a server hosting service. I chose to use openshift. After 3 days of pulling my hair out on openshift I switched
+over to heroku. (I'm happy to go into detail about what exactly I did and what problems I ran into that made me
+pull my hair out although I don't think this is what you are looking for in this doc.) Openshift ended up being
+the wrong decision because although it was a good service that many of my friends have used in the past, they recently
+changed to a "nextGen" release. Which is a prototype and has almost no documentation and no reasouces. Herkou,
+which mind you still caused significant hair pulling out, I was able to get to work. I then bought a domain name on
+namecheap, connected the two and voila, application. The "polar-reef" link that you are seeing on my android studio
+is the webstie that openshift created for me. It also is fully viable on the web. I made data requests to that
+website because it is faster (it skips over a redirection step to www.helphours.net) although both are working and
+viable options. 
+
+One major problem I ran into with deployment was being able to access the CS50 library. I ended up deicded to download
+it as a folder and just put it in my project (I realize this is not the correct way to go about this but it was the 
+quickest and easiest way to deal with the probelm). 
+
+After deployment, I made the same basic bare bones android application. Using a form just like the one on
+the web to push a new request to the server and a listView (a single column table) to view the current requests in 
+the database. The android application also had a TF look section which pulled down the data, and opened a new activivty 
+on click. (Each screen is an activity on android). I deicded to use the volley library to make server request handleing 
+easier. I chose volley because I have done this in the past without a libary and it can get really nitty gritty and 
+confusing to the point that it is really holding you back. 
+
+I then tried to do the same thing on iOS using alamofire (another library to aid with making server requests). Although
+I was able to connect to the server through the app, I kept getting stuck on trying to make basic UI such as buttons 
+(due to my lack of expirence with this side of iOS. I had coded in swift before but I was never in charge of the front
+end for any of the projects I had done in the past). Thus, I deicded to abandon android (athough I plan to revisit
+this over spring break). 
+
+Then I went back to the android app and added the TF's "see extra info on click" option and the ability for the server
+to respond to that click (aka I added in some more server side python code) and move the request into the "filled_request"
+database. Although I did not get around to using the filled_request database for this project, I deicded to leave it in 
+because I plan to use the record of requests in order to create data analytics for the course admministrators about what
+types of probelms students ran into, what the average waiting times were, etc. I again will be revisiting this over break.
+
+I then decided to make everything pretty. I handrew every element of my UI design in a free application similar to photoshop
+(including the splash screen, the gradient background, the buttons). I customized all the fonts, etc. While I was not able to
+comment any of my XML code (for some reason when I tried to put in comments it destroyed my program), it is fairly readable.
+Please note that I also added in some resource files in order to make referencing easier within these xml files (kind of like 
+pulling things out in a method, I only have to reference a certain layout and everything will be configured --- this is why on
+the "design" page in android studio, my listViews don't look as nice as in the app, everything is compiled together later). 
+I decided not to use a library for UI design within android because I could not find one that I deemed pretty enough and also
+because I wanted to make my webstie and app matching (which narrows down even more the types of libraries that I can use).
+
+I did the same thing on the website. I used bootstrap (I copied a lot of the formant from cs50 pset7). And added the same
+gradient that I made in the phone app and the same help hours logo). 
+
+And that was my project! 

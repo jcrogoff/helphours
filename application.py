@@ -58,8 +58,8 @@ def requesthelp_s():
         
         words = request.form.get('Problem').split()
         
-        #ensure problem not more than 3 words long
-        if len(words) > 3:
+        #ensure problem not more than 4 words long
+        if len(words) > 4:
             return render_template("apology.html", message = "Problem cannot be longer than 3 words, feel free to elaborate in description")
             
         problem = request.form['Problem']

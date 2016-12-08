@@ -1,0 +1,94 @@
+No complication is necessary for the web app as I have fully deployed it onto the real web. Simply visit 
+www.helphours.net.
+Please not that while all the code for the website is also within the IDE and should be sent upon "submit50"
+you can also find it here: https://github.com/jcrogoff/helphours.git
+
+1) How to Use the Website
+The website is meant for students only. 
+Click "Make request" in order to make a request for help. Fill out all required feilds (please note that description is not
+required and that on the website problem cannot be longer than 4 words). Then click the sumbit button. You can view your request
+under the see request section. Please note that there is no way to remove requests from the webstie, this can only be done through
+the app (this was on purpose). 
+
+
+2) How to complie the android:
+Compilation is necessary for the android app as I did not publish it to the android store. In order to compile
+and run my project you need android studio. To download android studio please visit this link: 
+https://developer.android.com/studio/index.html and choose the right version of android for your operating system.
+The download is quite large, and may take anywhere up to 3 hours to download depending on web speeds. 
+Then please follow this installation guide: https://developer.android.com/studio/install.html. Many computer run into
+problems setting up android studio, especially windows computers (weird right?) this can often be due to issues
+with setting up the ADB android debug bride. 
+
+The guide below (which I made two years ago) should help you solve this problem, only refer to this guide if you
+run into problems with the download:
+
+A) Locating the driver and updating it.
+    i) Find the location of the usb_driver folder. Do this by searching usb_driver in the C drive root 
+    (located in your file explorer). My usb_driver folder was located in: 
+    C:\Users\Richard\AppData\Local\Android\sdk\extras\google. You're driver should be located in 
+    sdk\extras\google like mines; however, I don't know where you're sdk folder is located.
+    ii) Once when you find location of the usb_driver, record it because you'll need it in the latter steps. 
+    iii) Open your usb_driver folder, in this folder you should see a Setup Information file called android_winsub. 
+    Leave this window open for now since it takes long to find it again.
+    iv) Go to this link: http://pathofacoder.com/2013/08/08/how-to-enable-adb-in-windows-8-for-google-glass-xe7/. 
+    On this page, download the link modified android_winsub.inf. The download should appear as latest_usb_drivers_windows.
+    v) After the download is complete, open it and you should see usb_driver. This is a modified version of the original 
+    driver you had. 
+    vi) Open the newly downloaded usb_driver folder, you should see android_winsub file just like the one you saw in the original usb_driver folder.
+    vii) Replace the android_winsub file in your original usb_driver with the new android_winsub file you received from 
+    the download.
+Finished!
+
+Once you have android studio install and working, you will need to create and new project and download all the code from my
+androidhelphours github repository. While I will be explaining all the steps to you here I strongly encourge you to
+refer to this guide: https://www.londonappdeveloper.com/how-to-clone-a-github-project-on-android-studio/ it has pictures
+and it very straightforward.
+
+Open up android studio. Click "check out project from version control" and then click the "github" option.
+You may need to enter your github credentials before proceeding. In the "host" fied make sure you type "github.com".
+In the "git repository URL" field type: https://github.com/jcrogoff/helphoursandroid.git. In the "Parent Directory" field
+choose where you would like the project to be stored on your computer. In "Director Name" you can type "helphoursandroid"
+(this should come up by default when you paste in the git repo link). Finall click clone! 
+
+Finally you will need to run the application (this step is the one that might not work if the ADB is not configured
+correctly. Click "build" and then "make project". Be warned, it is going to look like a bunch of errors are popping up
+but that is just the project configuring. This will take a few minutes. If you run into an error about "volley" or
+"missing module dependancy" then please email me. I don't know how to fix this error without having you download volley
+and then add a new module dependancy (even though volley and the dependacy should technically both be on the github repo. 
+The volley that I used it from the same zip file that I downloaded like a year and half ago onto my computer for a different
+project. I would need to make sure you are using that version and would want to send it to you over email. 
+
+If no errors appear, take a minute to dance.
+
+Then please click the green "run" button (it looks like a play button) on the top bar of android studio. Under "avalible 
+virtual devices" you should see some kind of android device, for me it is a nexus. Please make sure that is selected and
+then click okay. 
+
+The applicaiton will take care of anything else but it may take forever. For me the first time I ran it, it took 10 minutes to
+fully compile. (If you can, try to catch the splash screen that comes up upon loading of the application! If you miss it the 
+first time just exit the app on the simulator (just like how you would exit an app on a real android, by clicking the little
+app button and then clicking and dragging your application to the right) and run it again, it should run MUCH fast this time,
+no more than a minute (it was slow before because it had to set up the whole emulator). 
+
+And YAY! You're ready to use the app!
+
+2) How to Use the App:
+Please note two things. For some reason (and this may not be true for the emulator running on your system but it was 
+for the one on mine) the emulator is not able to create accurate UTC (timezone of SQL) timestamps. This means under
+"waittime" you may see negative numbers. Please ignore this. I was able to get my hand on a real android phone to 
+test the app and the UTC time stamps were not a problem and were generated correctly on the android. Secondly please
+note that the emulator is VERY VERY slow. It will not respond to clicks immediately. Please do not click multiple times
+on the same object, as this could get you to a random screen. Just click and wait for the respond. This speed issue
+is NOT due to my code. 
+
+Click on "Make a Request" in order to make a request (as a student) to get help with a problem. Provide all information
+nececary (table code is to indicate where you are sitting, an example is the table codes in annenburg, so for example
+you could put "C3". Click "submit" and your request will be send to the server! You will be taken back to the "Main"
+screen. Feel free to select either "Student Look" or "TF Look" . Under student look you will simply see a list of current 
+problems and waittimes (I apolgize in advance for the names of my dummy data). If you click the "back" button on the android
+simulator (the little backwards play button in the button corner), you can select TF look. In TF look you will again see
+a list of problems but now you can select the one that you will wish to help with. Upon click, the app will display more 
+info to you about the help request. If you click "Help" this will remove the request from the current or waiting requests
+database and into the filled requests database. You can see this by going to the TF look or student look section. And that's
+it! 
