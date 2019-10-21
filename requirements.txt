@@ -13,7 +13,7 @@ colorama==0.2.5
 feedparser==5.2.1
 html5lib==0.999
 itsdangerous==0.24
-nltk==3.2.1
+nltk==3.4.5
 oauthlib==2.0.0
 passlib==1.6.5
 plotly==1.12.9
